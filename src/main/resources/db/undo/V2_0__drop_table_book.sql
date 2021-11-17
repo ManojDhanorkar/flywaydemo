@@ -1,1 +1,1 @@
-drop table book;
+drop table employee2;
