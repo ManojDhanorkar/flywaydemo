@@ -1,14 +1,12 @@
 package com.example.flywaydemo;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.flywaydb.core.api.callback.Callback;
 import org.flywaydb.core.api.callback.Context;
 import org.flywaydb.core.api.callback.Event;
 
+@Slf4j
 public class ExampleFlywayCallback implements Callback {
-
-    private final Log log = LogFactory.getLog(getClass());
 
     @Override
     public boolean supports(Event event, Context context) {
