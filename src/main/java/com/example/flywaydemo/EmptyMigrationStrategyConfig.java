@@ -14,7 +14,7 @@ public class EmptyMigrationStrategyConfig {
     @Bean
     public FlywayMigrationStrategy flywayMigrationStrategy() {
         return flyway -> {
-            log.info("Skipping Flyway migration!");
+            //log.info("Skipping Flyway migration!");
         };
     }
 }
