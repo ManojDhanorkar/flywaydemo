@@ -15,39 +15,9 @@ import javax.sql.DataSource;
 import java.util.Objects;
 
 @SpringBootApplication
-public class FlywayApplication implements ApplicationRunner {
-
-    private final Log log = LogFactory.getLog(getClass());
-
-    @Value("${flyway.command}")
-    private String command;
-
-    @Autowired
-    private DataSource dataSource;
+public class FlywayApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FlywayApplication.class, args);
-    }
-
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        log.info("command: " + command);
-        Flyway flyway = Flyway.configure().dataSource(dataSource).load();
-
-        try {
-            if (Objects.nonNull(command)) {
-                if (command.equalsIgnoreCase("migrate")) {
-                    flyway.migrate();
-                } else if (command.equalsIgnoreCase("baseline")) {
-                    flyway.baseline();
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        for (MigrationInfo info : flyway.info().all()) {
-            log.info(info.getState());
-        }
     }
 }
